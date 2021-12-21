@@ -8,8 +8,11 @@ RUN apt-get update -y && \
         ant \
         git
 
+COPY drawio /tmp/drawio
+
+
 RUN cd /tmp && \
-    git clone --depth 1 https://github.com/jgraph/drawio.git && \
+    # git clone --depth 1 https://github.com/jgraph/drawio.git && \
     cd /tmp/drawio/etc/build/ && \
     ant war
 

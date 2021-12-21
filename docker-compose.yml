@@ -2,23 +2,26 @@
 version: '3.5'
 services:
   drawio:
-    image: jgraph/drawio
-    container_name: drawio
-    restart: unless-stopped
+    # image: jgraph/drawio
+    build: 
+      context: ./debian
+    image: fassmii/drawio
+    container_name: fassmii-drawio
+    restart: always
     ports:
       - 8080:8080
       - 8443:8443
-    environment:
-      PUBLIC_DNS: domain
-      ORGANISATION_UNIT: unit
-      ORGANISATION: org
-      CITY: city
-      STATE: state
-      COUNTRY_CODE: country
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://domain:8080 || exit 1"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 5
-      start_period: 10s
+    # environment:
+    #   PUBLIC_DNS: domain
+    #   ORGANISATION_UNIT: unit
+    #   ORGANISATION: org
+    #   CITY: city
+    #   STATE: state
+    #   COUNTRY_CODE: country
+    # healthcheck:
+    #   test: ["CMD-SHELL", "curl -f http://localhost:8080 || exit 1"]
+    #   interval: 1m30s
+    #   timeout: 10s
+    #   retries: 5
+    #   start_period: 10s
 
